@@ -1,0 +1,238 @@
+<div class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-2xl mx-auto bg-gradient-to-br from-white/80 to-rose-100/70 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 text-slate-900 border border-white/40">
+
+    @switch (gameState()) {
+      @case ('menu') {
+        <div class="text-center animate-fade-in">
+          <div class="w-32 h-32 mx-auto mb-2">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#A3E635" d="M47.3,-63.3C60.9,-54.2,71.3,-39.8,75.4,-24.1C79.4,-8.4,77.1,8.6,70.5,23.1C63.9,37.6,53.1,49.6,40.6,58.3C28.1,67,14,72.4,-1.3,73.8C-16.6,75.2,-33.2,72.6,-46.3,64.5C-59.4,56.4,-69,42.8,-74.6,27.7C-80.2,12.6,-81.8,-4,-76.9,-17.8C-72,-31.6,-60.6,-42.6,-48.1,-51.2C-35.6,-59.9,-22,-66.2,-7.7,-68.1C6.6,-70,23.6,-68.1,36,-66.6C48.4,-65.1,56.7,-64.5,47.3,-63.3Z" transform="translate(100 100) scale(1.1)" />
+              <g transform="translate(90 90) scale(1.2)">
+                <circle cx="-20" cy="-5" r="10" fill="white"/>
+                <circle cx="-20" cy="-5" r="5" fill="black"/>
+                <circle cx="20" cy="-5" r="10" fill="white"/>
+                <circle cx="20" cy="-5" r="5" fill="black"/>
+                <path d="M -25 20 Q 0 35 25 20" stroke="black" stroke-width="3" fill="transparent" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold text-sky-900 mb-2 drop-shadow-lg">Aventura Matemática</h1>
+          <p class="text-xl text-slate-700 mb-8">¡Hola! Elige una operación para empezar.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <button (click)="selectOperationAndStart('add')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-green-400 to-cyan-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+              <span>Sumar</span>
+            </button>
+            <button (click)="selectOperationAndStart('subtract')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-rose-400 to-orange-500">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+              <span>Restar</span>
+            </button>
+            <button (click)="selectOperationAndStart('multiply')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-amber-400 to-yellow-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h.5a1.5 1.5 0 010 3h-.5a1 1 0 00-1 1v.5a1.5 1.5 0 01-3 0V9a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3h.5a1 1 0 001-1v-.5z" /><path d="M10 3.5a1.5 1.5 0 00-3 0V4a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v.5a1.5 1.5 0 003 0V9a1 1 0 011-1h.5a1.5 1.5 0 000-3h-.5a1 1 0 01-1-1v-.5z" transform="rotate(45 10 10)" /></svg>
+              <span>Multiplicar</span>
+            </button>
+            <button (click)="selectOperationAndStart('divide')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-violet-400 to-purple-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /><path d="M9 4a1 1 0 100 2 1 1 0 000-2zM9 14a1 1 0 100 2 1 1 0 000-2z" /></svg>
+              <span>Dividir</span>
+            </button>
+            <button (click)="selectOperationAndStart('factor')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-sky-400 to-blue-500">
+              <span class="text-3xl leading-none font-bold">?×?</span>
+              <span>Factorizar</span>
+            </button>
+             <button (click)="selectOperationAndStart('random')" class="md:col-span-2 flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+              <span>Aleatorio</span>
+            </button>
+          </div>
+           <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <button (click)="showChallengeMenu()" class="text-lg font-bold text-white bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+              Modo Desafío
+            </button>
+            <button (click)="viewHighScores()" class="text-lg font-bold text-white bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+              Ver Puntuaciones
+            </button>
+          </div>
+        </div>
+      }
+
+      @case ('challengeMenu') {
+        <div class="text-center animate-fade-in">
+          <h1 class="text-4xl md:text-6xl font-bold text-orange-800 mb-2 drop-shadow-lg">Modo Desafío</h1>
+          <p class="text-xl text-slate-700 mb-8">¡Piensa rápido! Elige una operación.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+             <button (click)="startChallenge('add')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-green-400 to-cyan-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+              <span>Sumar</span>
+            </button>
+            <button (click)="startChallenge('subtract')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-rose-400 to-orange-500">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+              <span>Restar</span>
+            </button>
+            <button (click)="startChallenge('multiply')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-amber-400 to-yellow-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h.5a1.5 1.5 0 010 3h-.5a1 1 0 00-1 1v.5a1.5 1.5 0 01-3 0V9a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3h.5a1 1 0 001-1v-.5z" /><path d="M10 3.5a1.5 1.5 0 00-3 0V4a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v.5a1.5 1.5 0 003 0V9a1 1 0 011-1h.5a1.5 1.5 0 000-3h-.5a1 1 0 01-1-1v-.5z" transform="rotate(45 10 10)" /></svg>
+              <span>Multiplicar</span>
+            </button>
+            <button (click)="startChallenge('divide')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-violet-400 to-purple-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /><path d="M9 4a1 1 0 100 2 1 1 0 000-2zM9 14a1 1 0 100 2 1 1 0 000-2z" /></svg>
+              <span>Dividir</span>
+            </button>
+            <button (click)="startChallenge('factor')" class="flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-sky-400 to-blue-500">
+              <span class="text-3xl leading-none font-bold">?×?</span><span>Factorizar</span>
+            </button>
+            <button (click)="startChallenge('random')" class="md:col-span-2 flex items-center justify-center gap-3 p-4 h-20 text-white font-bold text-2xl md:text-3xl rounded-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl active:scale-95 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+              <span>Aleatorio</span>
+            </button>
+          </div>
+          <button (click)="goToMenu()" class="w-full md:w-auto text-lg font-bold text-white bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+              Volver
+          </button>
+        </div>
+      }
+
+      @case ('playing') {
+        @if (currentProblem(); as problem) {
+          <div class="animate-fade-in">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-4 text-lg font-semibold">
+              <div class="flex items-center gap-2 bg-blue-500 text-white pl-2 pr-4 py-1.5 rounded-full shadow-md">
+                <button (click)="goToMenu()" class="hover:bg-blue-600 rounded-full p-1.5 transition" aria-label="Volver al menú">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
+                </button>
+                <span class="font-bold">Nivel: {{ level() }}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                @for (life of [].constructor(lives()); track $index) {
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500 animate-pulse drop-shadow" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                  </svg>
+                }
+              </div>
+              <div class="bg-green-500 text-white px-4 py-2 rounded-full shadow-md font-bold">Puntos: {{ score() }}</div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-white/40 rounded-full h-3 mb-4 shadow-inner">
+                <div class="bg-white h-3 rounded-full transition-all duration-500" [style.width.%]="levelProgress()"></div>
+            </div>
+
+             <!-- Timer Bar for Challenge Mode -->
+            @if(gameMode() === 'challenge') {
+              <div class="w-full bg-slate-200/70 rounded-full h-5 mb-4 shadow-inner overflow-hidden border border-slate-300 relative">
+                  <div class="bg-gradient-to-r from-rose-500 to-red-600 h-full rounded-full transition-all duration-200" [style.width.%]="timerProgress()"></div>
+                  <span class="absolute inset-0 text-center font-bold text-white text-sm leading-5 drop-shadow-sm">{{ timerValue() }}s</span>
+              </div>
+            } @else {
+              <div class="h-5 mb-4"></div>
+            }
+
+            <!-- Problem -->
+            <div class="text-center min-h-[150px] flex items-center justify-center mb-6">
+              <p class="text-6xl md:text-8xl font-bold tracking-wider text-slate-800">{{ problem.question }}</p>
+            </div>
+
+            <!-- Answer Input -->
+            <form (submit)="submitAnswer(); $event.preventDefault()">
+              @if (problem.type === 'factor') {
+                <div class="flex justify-center items-center gap-2 sm:gap-4">
+                  <input [(ngModel)]="userFactor1" name="factor1" type="number" class="w-32 sm:w-40 text-center text-6xl font-bold text-slate-700 bg-white/40 focus:bg-white/70 border-2 border-transparent focus:border-sky-400 focus:ring-0 focus:outline-none rounded-2xl p-3 transition shadow-inner" required>
+                  <span class="text-6xl font-bold text-slate-700">×</span>
+                  <input [(ngModel)]="userFactor2" name="factor2" type="number" class="w-32 sm:w-40 text-center text-6xl font-bold text-slate-700 bg-white/40 focus:bg-white/70 border-2 border-transparent focus:border-sky-400 focus:ring-0 focus:outline-none rounded-2xl p-3 transition shadow-inner" required>
+                </div>
+              } @else {
+                <input [(ngModel)]="userAnswer" name="answer" type="number" class="w-full max-w-sm mx-auto block h-28 text-center text-8xl font-bold text-slate-700 bg-white/40 focus:bg-white/70 border-2 border-transparent focus:border-sky-400 focus:ring-0 focus:outline-none rounded-2xl transition shadow-inner" required>
+              }
+              <button type="submit" class="w-full max-w-sm mx-auto block mt-8 text-2xl font-bold text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 py-4 rounded-full shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+                Revisar
+              </button>
+            </form>
+
+            <!-- Feedback Message -->
+            @if (feedbackMessage()) {
+              <div class="mt-4 text-center text-xl font-medium p-3 rounded-lg animate-pop-in"
+                  [class.text-green-800]="feedbackType() === 'success'"
+                  [class.bg-green-200]="feedbackType() === 'success'"
+                  [class.text-red-800]="feedbackType() === 'error'"
+                  [class.bg-red-200]="feedbackType() === 'error'"
+                  [class.text-blue-800]="feedbackType() === 'info'"
+                  [class.bg-blue-200]="feedbackType() === 'info'"
+                  >
+                {{ feedbackMessage() }}
+              </div>
+            }
+          </div>
+        }
+      }
+
+      @case ('gameOver') {
+        <div class="text-center animate-fade-in">
+          <h2 class="text-6xl font-bold text-red-700 mb-4 drop-shadow">¡Juego Terminado!</h2>
+          @if(isNewHighScore()){
+             <p class="text-2xl font-bold text-yellow-500 bg-yellow-100 py-2 px-4 rounded-full inline-block mb-4 animate-pulse">
+                ¡NUEVO RÉCORD!
+             </p>
+          }
+          <p class="text-3xl text-slate-800 mb-8">Tu puntuación final es: <span class="font-bold text-sky-900 text-4xl">{{ score() }}</span></p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button (click)="playAgain()" class="text-xl font-bold text-white bg-gradient-to-r from-lime-500 to-green-500 hover:from-lime-600 hover:to-green-600 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+              Jugar de Nuevo
+            </button>
+             <button (click)="goToMenu()" class="text-xl font-bold text-white bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+              Ir al Menú
+            </button>
+          </div>
+        </div>
+      }
+
+      @case('highScores') {
+        <div class="text-center animate-fade-in">
+          <h2 class="text-5xl font-bold text-sky-900 mb-6 drop-shadow">Mejores Puntuaciones</h2>
+          
+          <div class="flex justify-center bg-white/30 rounded-full p-1 gap-1 mb-6">
+            <button (click)="highScoreTab.set('classic')"
+                    [class.bg-white]="highScoreTab() === 'classic'"
+                    [class.shadow]="highScoreTab() === 'classic'"
+                    [class.text-sky-700]="highScoreTab() === 'classic'"
+                    [class.text-slate-600]="highScoreTab() !== 'classic'"
+                    class="w-1/2 px-6 py-2 font-bold text-xl transition rounded-full">
+              Clásico
+            </button>
+            <button (click)="highScoreTab.set('challenge')"
+                    [class.bg-white]="highScoreTab() === 'challenge'"
+                    [class.shadow]="highScoreTab() === 'challenge'"
+                    [class.text-orange-700]="highScoreTab() === 'challenge'"
+                    [class.text-slate-600]="highScoreTab() !== 'challenge'"
+                    class="w-1/2 px-6 py-2 font-bold text-xl transition rounded-full">
+              Desafío
+            </button>
+          </div>
+
+          @if(highScoresForDisplay().length === 0) {
+            <p class="text-slate-700 text-lg mt-8">Aún no hay puntuaciones para el modo {{ highScoreTab() === 'classic' ? 'Clásico' : 'Desafío' }}. ¡Juega una partida para ser el primero!</p>
+          } @else {
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-h-[40vh] overflow-y-auto p-2">
+              @for(item of highScoresForDisplay(); track item.operation) {
+                <div class="bg-white/50 p-4 rounded-lg shadow-md">
+                  <h3 class="text-2xl font-bold text-indigo-800 mb-3">{{ item.name }}</h3>
+                  <ol class="list-decimal list-inside space-y-1 text-lg">
+                    @for(score of item.scores; track $index) {
+                      <li class="font-semibold text-slate-700">
+                        <span class="font-bold text-slate-900">{{ score }}</span> puntos
+                      </li>
+                    }
+                  </ol>
+                </div>
+              }
+            </div>
+          }
+          <button (click)="goToMenu()" class="mt-8 text-xl font-bold text-white bg-gradient-to-r from-lime-500 to-green-500 hover:from-lime-600 hover:to-green-600 py-3 px-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 active:scale-95">
+            Volver al Menú
+          </button>
+        </div>
+      }
+    }
+    <audio #levelUpAudio src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YV9vT19AAAAA//8CAPAA8wD4AP8A/gD9APMA/AD6APQA/wD8APgA/AD7APYA/wD5APYA/gD7APEA/AD3APIA/AD2APIA/gD0APQA+gD1AP4A9AD1APUA9wD0APYA9AD5APQA/wD2APMA/AD2APYA/QD4APYA+wD5AP0A+AD4APoA9wD9APMA+AD4APUA/AD4APMA/gD3APYA+wD4AP8A+QD3AP0A+AD9APcA/AD4APgA/AD5APUA/AD2APQA/wD4APQA/AD5APYA/QD2APMA+wD2AP8A+QD2AP4A+AD6AP4A9wD8APgA9wD+APgA9wD9APYA+gD4AP8A+gD4AP0A+AD7APkA/AD4APwA9gD9APMA/AD4APMA/wD3APUA/AD4APQA/wD2APMA+gD2AP8A+QD3AP0A+gD7AP0A+gD6AP4A+QD+APgA+wD9AP0A+QD9APwA/QD9AP0A/QD8AP8A/QD8AP0A/AD+APwA/QD+AP0A/wD+AP8A/wD/AP8A/wD/AAAA"></audio>
+  </div>
+</div>
